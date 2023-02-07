@@ -1,44 +1,54 @@
 #include <string>
-#include <Windows.h>
 #include <iostream>
-#include <cstdlib>
-#include "hardapi.h"
 #include "randomapi.h"
+#include "mediumapi.h"
+#include <chrono>
+#include <thread>
+#include "hardapi.h"
+#include "impossibleapi.h"
 
 using namespace std;
 
 
 int main()
 {
-	system("Color 70");
 
 	random_device rd;
-	int randomTimer = rd() % 10001;
+	int randomTimer = rd() % 5001;
 
-	cout << "Want to play some tic tac toe? (y/n)" << endl;
-	string gettr;
-	getline(cin, gettr);
-	if (gettr == "n" || gettr == "N" || gettr == "no" || gettr == "No")
-	{
-		return 0;
-	}
-	
-	cout << endl << "Great, would you like to play against the impossible ai, or the random ai?" << endl << "(1)Impossible AI" << endl << "(2)Random Ai" << endl;
+	cout << "Hello! Welcome to my TicTacToe Project! \t Current version is 2.13" << endl << endl;
+	cout << endl << "Choose the difficulty you wish to play" << endl << "(1)Level 1 Ai" << endl << "(2)Level 2 Ai" << endl << "(3)Level 3 Ai" << endl << "(4)Level 4 Ai (Max)" << endl;
 	string aigettr;
 	while (true)
 	{
 		getline(cin, aigettr);
 
-		if (aigettr == "1")
-		{
-			cout << "Sorry, this feature hasn't been implemented yet!" << endl;
-			//initialize
-		}
-		else if (aigettr == "2")
+		if (aigettr == "2")
 		{
 			cout << "Starting game session..." << endl;
-			Sleep(randomTimer);
+			std::this_thread::sleep_for(chrono::milliseconds(randomTimer));
+			mediumApi();
+			break;
+		}
+		else if (aigettr == "1")
+		{
+			cout << "Starting game session..." << endl;
+			std::this_thread::sleep_for(chrono::milliseconds(randomTimer));
 			randomApi();
+			break;
+		}
+		else if (aigettr == "3")
+		{
+			cout << "Starting game session..." << endl;
+			std::this_thread::sleep_for(chrono::milliseconds(randomTimer));
+			hardApi();
+			break;
+		}
+		else if (aigettr == "4")
+		{
+			cout << "Starting game session..." << endl;
+			std::this_thread::sleep_for(chrono::milliseconds(randomTimer));
+			impossibleApi();
 			break;
 		}
 		else
@@ -47,10 +57,4 @@ int main()
 			aigettr.clear();
 		}
 	}
-
-
-
-	//ask the player if they want to play tic tac toe
-	//ask the player if they would like to play against the hard api or the random api
-	//play the player
 }
