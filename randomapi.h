@@ -2,9 +2,9 @@
 #include <random>
 #include "display.h"
 #include "extrafun.h"
-#include <synchapi.h>
-
 using namespace std;
+#include <chrono>
+#include <thread>
 
 void randomApi()
 {
@@ -15,7 +15,6 @@ void randomApi()
 	{
 		callDisplayValue = playerInput(callDisplayValue);
 		string replaceCharVal;
-		int checkCharVal;
 
 		while (true)
 		{
@@ -45,23 +44,23 @@ void randomApi()
 					if (winBool2 == "playerWin")
 					{
 						cout << "The player has won the game!" << endl;
-						Sleep(10000);
+						std::this_thread::sleep_for(chrono::milliseconds(5000));
 						exit(2);
 					}
 					else if (winBool2 == "playerLose")
 					{
 						cout << "The player has lost the game!" << endl;
-						Sleep(10000);
+						std::this_thread::sleep_for(chrono::milliseconds(5000));
 						exit(2);
 					}
 					else if (winBool2 == "neither")
 					{
-						Sleep(10);
+						std::this_thread::sleep_for(chrono::milliseconds(10));
 					}
 					else if (winBool2 == "draw")
 					{
 						cout << "Draw!" << endl;
-						Sleep(10000);
+						std::this_thread::sleep_for(chrono::milliseconds(5000));
 						exit(2);
 					}
 					else
@@ -79,18 +78,18 @@ void randomApi()
 		if (winBool == "playerWin")
 		{
 			cout << "The player has won the game!" << endl;
-			Sleep(10000);
+			std::this_thread::sleep_for(chrono::milliseconds(5000));
 			break;
 		}
 		else if (winBool == "playerLose")
 		{
 			cout << "The player has lost the game!" << endl;
-			Sleep(10000);
+			std::this_thread::sleep_for(chrono::milliseconds(5000));
 			break;
 		}
 		else if (winBool == "neither")
 		{
-			Sleep(50);
+			std::this_thread::sleep_for(chrono::milliseconds(50));
 		}
 		else
 		{
